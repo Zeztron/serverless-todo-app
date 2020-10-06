@@ -18,6 +18,25 @@ provider:
     ATTACHMENTS_S3_BUCKET: serverless-s3-attachments-${self:provider.stage}
     SIGNED_URL_EXPIRATION: 300
     JWKS_URL: https://dev-lx46p2a3.us.auth0.com/.well-known/jwks.json
+  
+  tracing:
+    lambda: true
+    apiGateway: true
+
+custom:
+  documentation:
+    api:
+      info:
+        version: v1.0.0
+        title: Todo App
+        description: Todo App serverless
+    models:
+      - name: CreateRequest
+        contentType: application/json
+        schema: ${file(models/create-request.json)}
+      - name: UpdateRequest
+        contentType: application/json
+        schema: ${file(models/update-request.json)}
 
 functions:
 
